@@ -31,7 +31,7 @@ def transcribe_audio_with_whisper(audio_path, language='es'):
     model = whisper.load_model(model_path)
     result = model.transcribe(audio_path, language=language)
     print("Entró a transcribe_audio_with_whisper")
-    with open("archivo.txt", "w") as archivo:
+    with open("archivo.txt", "w", encoding="utf-8") as archivo:
         archivo.write(result["text"])
     print(f"Terminó transcripción, {datetime.datetime.now()} ")
     return result["text"]
@@ -39,9 +39,9 @@ def transcribe_audio_with_whisper(audio_path, language='es'):
 
 def transcribe_youtube_video(url):
     inicio = time.time()
-    video_path = download_youtube_video(url)
+    video_path = "video.mp4" #download_youtube_video(url)
     audio_path = 'audio.wav'
-    convert_video_to_wav_ffmpeg(video_path,audio_path)
+    # convert_video_to_wav_ffmpeg(video_path,audio_path)
     text = transcribe_audio_with_whisper(audio_path, language='es')
     fin = time.time()
     # # Cleanup the downloaded files
