@@ -2,7 +2,6 @@ import librosa
 import numpy as np
 
 def detect_applause(audio_path, threshold=0.2, frame_length=2048, hop_length=512):
-    # Load the audio file
     y, sr = librosa.load(audio_path, sr=None)
 
     # Compute the short-time energy of the audio signal
@@ -38,6 +37,6 @@ def detect_applause(audio_path, threshold=0.2, frame_length=2048, hop_length=512
     return applause_start_times
 
 # Usage
-audio_path = 'path_to_your_audio.wav'
+audio_path = 'audio.wav'
 applause_times = detect_applause(audio_path)
 print(f"Aplausos detectados en los siguientes segundos: {applause_times}")
