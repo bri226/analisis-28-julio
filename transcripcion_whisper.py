@@ -27,7 +27,7 @@ def convert_video_to_wav_ffmpeg(video_path, audio_path):
 def transcribe_audio_with_whisper(audio_path, language='es'):
     print(f"Empezó transcripción, {datetime.datetime.now()}")
     # model = whisper.load_model("base")  # You can use "base", "small", "medium", "large"
-    model_path = "small.pt" #"base.pt"
+    model_path = "base.pt"  #"small.pt"
     model = whisper.load_model(model_path)
     result = model.transcribe(audio_path, language=language)
     print("Entró a transcribe_audio_with_whisper")
