@@ -47,7 +47,7 @@ def transcribe_youtube_video(url):
     # # Cleanup the downloaded files
     # os.remove(video_path)
     # os.remove(audio_path)
-    print(f"Tiempo total: {round(final-inicio,2)} ")
+    print(f"Tiempo total: {round(fin-inicio,2)} ")
     return text
 
 # # Example usage
