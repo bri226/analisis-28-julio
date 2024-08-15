@@ -2,6 +2,7 @@ import pdfplumber
 from transformers import pipeline
 import nltk
 from nltk.tokenize import sent_tokenize
+import matplotlib.pyplot as plt
 
 # Descargar los recursos necesarios para la tokenización de oraciones
 nltk.download('punkt')
@@ -68,7 +69,7 @@ def calculate_emotion_percentages_and_words(results):
     return emotion_percentages_by_words, emotion_percentages_by_counts, emotion_examples, emotion_word_counts
 
 # Ruta al archivo PDF
-pdf_path = r'C:\Users\Brillitt\Documents\GITHUB\audio_to_text\transcripcion\dinaboluarte\2023_transcripcion_literal_traduccion.pdf'
+pdf_path = r'C:\Users\Brillitt\Documents\GITHUB\audio_to_text\transcripcion\dinaboluarte\transcripcion_literal_traduccion.pdf'
 text = extract_text_from_pdf(pdf_path)
 sentences = split_text_into_sentences(text)
 results = analyze_sentiments(sentences)
@@ -92,7 +93,18 @@ for emotion, count in emotion_word_counts.items():
 # Imprimir ejemplos de oraciones clasificadas por cada emoción
 print("\nExamples of sentences classified by emotion:")
 for emotion, examples in emotion_examples.items():
-    if(emotion == 'surprise'):
-        print(f"\nEmotion: {emotion}")
-        for example in examples:
-            print(f"  - {example}")
+    print(f"\nEmotion: {emotion}")
+    for example in examples:
+        print(f"  - {example}")
+
+
+# # Graficar porcentaje promedio de emociones basado en el número de oraciones
+# plt.figure(figsize=(10, 6))
+# plt.bar(emotion_percentages_by_counts.keys(), emotion_percentages_by_counts.values(), color='skyblue')
+# plt.xlabel('Emotions')
+# plt.ylabel('Average Percentage')
+# plt.title('Porcentaje de emoción basado en número de oraciones')
+# plt.xticks(rotation=45)
+# plt.grid(axis='y', linestyle='--', alpha=0.7)
+# plt.tight_layout()
+# plt.show()
