@@ -44,7 +44,6 @@ def transcribe_youtube_video(url):
     # convert_video_to_wav_ffmpeg(video_path,audio_path)
     text = transcribe_audio_with_whisper(audio_path, language='es')
     fin = time.time()
-    # # Cleanup the downloaded files
     # os.remove(video_path)
     # os.remove(audio_path)
     print(f"Tiempo total: {round(fin-inicio,2)} ")
